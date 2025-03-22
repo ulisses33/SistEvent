@@ -3,7 +3,6 @@ from tkinter import messagebox
 import sqlite3
 import os
 
-# Funções de Banco de Dados
 def criar_banco_dados():
     try:
         caminho_banco_dados = os.path.join(os.getcwd(), 'eventos_academicos.db')
@@ -52,8 +51,7 @@ def buscar_eventos(palavra_chave):
     except Exception as e:
         messagebox.showerror("Erro", f"Erro ao buscar eventos: {e}")
         return []
-
-# Funções da Interface Gráfica
+        
 def adicionar_evento_interface():
     titulo = entrada_titulo.get()
     descricao = entrada_descricao.get()
@@ -81,14 +79,11 @@ def buscar_eventos_interface():
     else:
         messagebox.showinfo("Resultados da Busca", "Nenhum evento encontrado.")
 
-# Configuração da Interface Gráfica
 app = tk.Tk()
 app.title("Sistema de Anúncio de Eventos Acadêmicos")
 
-# Adicionando padding e espaçamento
 app.configure(padx=20, pady=20)
 
-# Seções da Interface
 tk.Label(app, text="Título", font=("Arial", 12)).grid(row=0, column=0, sticky="w", pady=(0, 5))
 entrada_titulo = tk.Entry(app, width=40, font=("Arial", 12))
 entrada_titulo.grid(row=1, column=0, pady=(0, 10))
@@ -110,8 +105,6 @@ entrada_busca.grid(row=9, column=0, pady=(0, 10))
 
 tk.Button(app, text="Buscar", command=buscar_eventos_interface, font=("Arial", 12)).grid(row=10, column=0, pady=(0, 20))
 
-# Criar Banco de Dados ao iniciar
 criar_banco_dados()
 
-# Executar Aplicação
 app.mainloop()
